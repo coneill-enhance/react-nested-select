@@ -1,3 +1,7 @@
+// import "react-complex-tree/lib/style.css";
+import './NestedSelect.css'
+import "@blueprintjs/core/lib/css/blueprint.css";
+
 import React from "react";
 import {
   ControlledTreeEnvironment,
@@ -113,18 +117,38 @@ const data = {
 }
 
 const NestedSelect = () => {
+     const [focusedItem, setFocusedItem] = React.useState();
+     const [expandedItems, setExpandedItems] = React.useState([]);
+    const [selectedItems, setSelectedItems] = React.useState([]);
     return (
-      <ControlledTreeEnvironment
-        {...bpRenderers}
-        getItemTitle={(item) => item.data}
-        items={data.list.items}
-        viewState={{
-          "tree-1": {
-          },
-        }}
-      >
-        <Tree treeId="tree-1" rootItem="root" treeLabel="Tree Example" />
-      </ControlledTreeEnvironment>
+      <div className="nested-select">
+        <ControlledTreeEnvironment
+          {...bpRenderers}
+          getItemTitle={(item) => item.data}
+          items={data.list.items}
+          onFocusItem={(item) => setFocusedItem(item.index)}
+          onExpandItem={(item) =>
+            setExpandedItems([...expandedItems, item.index])
+          }
+          onCollapseItem={(item) =>
+            setExpandedItems(
+              expandedItems.filter(
+                (expandedItemIndex) => expandedItemIndex !== item.index
+              )
+            )
+          }
+          onSelectItems={(items) => setSelectedItems(items)}
+          viewState={{
+            "tree-1": {
+              focusedItem,
+              expandedItems,
+              selectedItems,
+            },
+          }}
+        >
+          <Tree treeId="tree-1" rootItem="root" treeLabel="Tree Example" />
+        </ControlledTreeEnvironment>
+      </div>
     );
 }
 

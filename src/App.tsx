@@ -3,12 +3,13 @@ import './App.css'
 import { useState } from 'react'
 
 import reactLogo from './assets/react.svg'
-
+import NestedSelect from './components/NestedSelect'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+      <NestedSelect />
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -22,6 +23,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -30,7 +32,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
 export default App
