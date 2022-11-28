@@ -4,11 +4,6 @@ import {
   Tree
 } from "react-complex-tree";
 import { renderers as bpRenderers } from "react-complex-tree-blueprintjs-renderers";
-
-export interface INestedSelect {
-
-}
-
 const data = {
     "list": {
         "items": {
