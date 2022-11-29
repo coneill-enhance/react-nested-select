@@ -1,4 +1,13 @@
-const formatData = (rawData: any, formattedData: any = { items: {} }) => {
+import { TreeItem, TreeItemIndex } from "react-complex-tree";
+
+export interface INestedSelectRawData{
+  root: Record<any,any>
+}
+
+const formatData = (
+  rawData: INestedSelectRawData,
+  formattedData: { items: Record<TreeItemIndex, TreeItem<any>> } = { items: {} }
+): { items: Record<TreeItemIndex, TreeItem<any>> } => {
   for (const [key, value] of Object.entries(rawData)) {
     formattedData.items[key] = {
       index: key,
