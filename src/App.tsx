@@ -1,15 +1,75 @@
-import './App.css'
+import "./App.css";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-import reactLogo from './assets/react.svg'
-import NestedSelect from './components/NestedSelect'
+import reactLogo from "./assets/react.svg";
+import NestedSelect from "./components/NestedSelect";
+import dataFormatter from "./utilities/nestedSelectDataProcessor";
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const longTreeTemplate = {
+    root: {
+      Fruit: {
+        Apple: null,
+        Orange: null,
+        Lemon: null,
+        Berries: {
+          Strawberry: {
+            SmashBurger: null,
+            Chowder: null,
+            Ravioli: null,
+            MacAndCheese: null,
+            Brownies: null,
+          },
+          Blueberry: null,
+        },
+        Banana: null,
+      },
+      Meals: {
+        America: {
+          SmashBurger: null,
+          Chowder: null,
+          Ravioli: null,
+          MacAndCheese: null,
+          Brownies: null,
+        },
+        Europe: {
+          Risotto: null,
+          Spaghetti: null,
+          Pizza: null,
+          Weisswurst: null,
+          Spargel: null,
+        },
+        Asia: {
+          Curry: null,
+          PadThai: null,
+          Jiaozi: null,
+          Sushi: null,
+        },
+        Australia: {
+          PotatoWedges: null,
+          PokeBowl: null,
+          LemonCurd: null,
+          KumaraFries: null,
+        },
+      },
+      Desserts: {
+        Cookies: null,
+        IceCream: null,
+      },
+      Drinks: {
+        PinaColada: null,
+        Cola: null,
+        Juice: null,
+      },
+    },
+  };
+
+  const formattedData = dataFormatter(longTreeTemplate);
 
   return (
     <div className="App">
-      <NestedSelect />
+      <NestedSelect treeData={formattedData} />
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -35,4 +95,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
