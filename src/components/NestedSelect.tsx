@@ -15,7 +15,7 @@ export interface INestedSelect {
   treeData: { items: Record<TreeItemIndex, TreeItem<any>> };
 }
 
-const NestedSelect = (list: INestedSelect) => {
+export const NestedSelect = (list: INestedSelect) => {
   const treeNodes = list.treeData;
   const [focusedItem, setFocusedItem] = React.useState();
   const [expandedItems, setExpandedItems] = React.useState([]);
@@ -52,4 +52,4 @@ const NestedSelect = (list: INestedSelect) => {
   );
 };
 
-export default NestedSelect;
+

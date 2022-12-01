@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 
 import reactLogo from "./assets/react.svg";
-import NestedSelect from "./components/NestedSelect";
+import {NestedSelect} from "./components/NestedSelect";
 import dataFormatter from "./utilities/nestedSelectDataProcessor";
 function App() {
   const [count, setCount] = useState(0);
