@@ -2,7 +2,7 @@
 import "./NestedSelect.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 
-import React from "react";
+import React, { SetStateAction } from "react";
 import {
   ControlledTreeEnvironment,
   Tree,
@@ -26,9 +26,9 @@ export const NestedSelect = (list: INestedSelect) => {
         {...bpRenderers}
         getItemTitle={(item) => item.data}
         items={treeNodes.items}
-        onFocusItem={(item) => setFocusedItem(item.index)}
+        onFocusItem={(item) => setFocusedItem(item.index as unknown as SetStateAction<undefined>)}
         onExpandItem={(item) =>
-          setExpandedItems([...expandedItems, item.index])
+          setExpandedItems([...expandedItems, item.index] as never)
         }
         onCollapseItem={(item) =>
           setExpandedItems(
@@ -37,7 +37,7 @@ export const NestedSelect = (list: INestedSelect) => {
             )
           )
         }
-        onSelectItems={(items) => setSelectedItems(items)}
+        onSelectItems={(items) => setSelectedItems(items as SetStateAction<never[]>)}
         viewState={{
           "tree-1": {
             focusedItem,
