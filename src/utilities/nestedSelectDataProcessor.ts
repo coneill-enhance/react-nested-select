@@ -25,4 +25,4 @@ const formatData = (
   return formattedData;
 };
 
-export default formatData;
+export { formatData };

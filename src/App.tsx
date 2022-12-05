@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import reactLogo from "./assets/react.svg";
 import {NestedSelect} from "./components/NestedSelect";
-import dataFormatter from "./utilities/nestedSelectDataProcessor";
+import {formatData as dataFormatter} from "./utilities/nestedSelectDataProcessor";
 function App() {
   const [count, setCount] = useState(0);
   const longTreeTemplate = {
