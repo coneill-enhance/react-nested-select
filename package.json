@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/tafadzwad"
   },
-  "version": "0.0.6",
+  "version": "0.0.8",
   "type": "module",
   "files": ["dist"],
   "main": "./dist/react-nested-select.umd.cjs",
