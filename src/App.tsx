@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <NestedSelect treeData={formattedData} />
+      <NestedSelect treeData={formattedData} onSelected={(data) => console.log('Yes Data',data)} />
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />

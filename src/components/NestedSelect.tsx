@@ -13,10 +13,12 @@ import { renderers as bpRenderers } from "react-complex-tree-blueprintjs-rendere
 
 export interface INestedSelect {
   treeData: { items: Record<TreeItemIndex, TreeItem<any>> };
+  onSelected: (arg0: any) => void;
 }
 
 export const NestedSelect = (list: INestedSelect) => {
   const treeNodes = list.treeData;
+  const onSelectedCallback = list.onSelected;
   const [focusedItem, setFocusedItem] = React.useState();
   const [expandedItems, setExpandedItems] = React.useState([]);
   const [selectedItems, setSelectedItems] = React.useState([]);
@@ -26,7 +28,9 @@ export const NestedSelect = (list: INestedSelect) => {
         {...bpRenderers}
         getItemTitle={(item) => item.data}
         items={treeNodes.items}
-        onFocusItem={(item) => setFocusedItem(item.index as unknown as SetStateAction<undefined>)}
+        onFocusItem={(item) =>
+          setFocusedItem(item.index as unknown as SetStateAction<undefined>)
+        }
         onExpandItem={(item) =>
           setExpandedItems([...expandedItems, item.index] as never)
         }
@@ -37,7 +41,10 @@ export const NestedSelect = (list: INestedSelect) => {
             )
           )
         }
-        onSelectItems={(items) => setSelectedItems(items as SetStateAction<never[]>)}
+        onSelectItems={(items) => {
+          setSelectedItems(items as SetStateAction<never[]>);
+          onSelectedCallback(items);
+        }}
         viewState={{
           "tree-1": {
             focusedItem,
@@ -51,5 +58,3 @@ export const NestedSelect = (list: INestedSelect) => {
     </div>
   );
 };
-
-
